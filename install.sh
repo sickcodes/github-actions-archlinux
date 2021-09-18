@@ -1,10 +1,12 @@
 #!/bin/sh
 set -e
-wget -O /tmp/undocker.py https://github.com/larsks/undocker/raw/c951f021e701b4ce61de03eb668a440e69646889/undocker.py
+wget -O /tmp/undocker.py https://raw.githubusercontent.com/sickcodes/undocker/master/undocker.py
 sudo mkdir -p /rootfs
-docker pull zaoqi/github-actions-archlinux
-docker save zaoqi/github-actions-archlinux | sudo python3 /tmp/undocker.py -o /rootfs zaoqi/github-actions-archlinux
-docker rmi zaoqi/github-actions-archlinux
+# Forked from https://hub.docker.com/r/zaoqi/github-actions-archlinux
+# @ https://hub.docker.com/r/sickcodes/github-actions-archlinux
+docker pull sickcodes/github-actions-archlinux
+docker save sickcodes/github-actions-archlinux | sudo python3 /tmp/undocker.py -o /rootfs zaoqi/github-actions-archlinux
+docker rmi sickcodes/github-actions-archlinux
 rm -fr /tmp/undocker.py
 sudo sh -c "
 systemctl stop docker
