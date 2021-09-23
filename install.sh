@@ -5,7 +5,7 @@ sudo mkdir -p /rootfs
 # Forked from https://hub.docker.com/r/zaoqi/github-actions-archlinux
 # @ https://hub.docker.com/r/sickcodes/github-actions-archlinux
 docker pull sickcodes/github-actions-archlinux
-docker save sickcodes/github-actions-archlinux | sudo python3 /tmp/undocker.py -o /rootfs zaoqi/github-actions-archlinux
+docker save sickcodes/github-actions-archlinux | sudo python3 /tmp/undocker.py -o /rootfs sickcodes/github-actions-archlinux
 docker rmi sickcodes/github-actions-archlinux
 rm -fr /tmp/undocker.py
 sudo sh -c "
